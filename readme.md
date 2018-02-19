@@ -1,6 +1,7 @@
 Author: Raluca Constanda
 
-Run: 
+Run:
+	npm install -g @angular/cli
 	cd ApiaryApp
 	ng serve
 	
@@ -9,3 +10,5 @@ http://localhost:4200/
 
 Technology used: 
 Angular 5
+
+Node.js version 8.9.3
