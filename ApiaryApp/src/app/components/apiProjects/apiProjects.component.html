@@ -1,0 +1,42 @@
+<div class="container" >
+  <div class="table-responsive">
+    <table class="table">
+      <tr class="font-weight-light text-secondary">
+        <td>
+          <button (click)="getApis()" class="btn btn-success">Check APIs</button>
+        </td>
+        <td>
+          Last check {{lastCheckedFromNow}}
+        </td>
+        <td>
+          <div>Search result</div>
+          <div>
+            {{lastCheckTime  | date:'HH:mm:ss yyyy-M-d '}}  APIs: {{totalCount}} | Passed: {{passedCount}} | Failed : {{failedCount}}
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <table class="table">
+    <tbody>
+      <tr *ngFor="let api of apiList">
+        <td>{{api.name}}</td>
+
+        <td>
+          <div *ngIf="api.passed == true">Passed</div>
+          <div *ngIf="api.passed == false">
+            <ul class="list-unstyled">
+              <div class="text-danger">{{api.errors.length}} error(s) </div>
+              <li *ngFor="let error of api.errors">
+                {{error.name}}
+                {{error.lines}}
+              </li>
+            </ul>
+          </div>
+        </td>
+        <td>{{ transformDate(api.lastUpdated)}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
